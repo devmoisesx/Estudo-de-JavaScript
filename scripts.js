@@ -1,60 +1,105 @@
-// Declarações de variáveis
-var n1 = 0; // declara uma variável de escopo global.
-let n2 = 0; // variável local de escopo de bloco.
-const n3 = 0; // tem escopo de bloco. Valor não pode ser alterado, mas se for um objeto ou matriz, as propriedades poderão ser atualizadas ou removidas.
+const circles = document.querySelectorAll(".circle");
+const boxModal = document.querySelector(".box-modal");
+const btnOpenModal = document.querySelector(".open-modal");
+const counter = document.querySelector(".counter");
 
-// Regras de nomenclatura
-let minhaVariavel; // nomes compostos usar o estilo camelCase
-let soma; // começar com a letra minúscula
-let soma2; // pode usar números, mas sem ser o primeiro caracter
-// evitar usar caracteres especiais, por exemplo: ;:'"!@#$%ç^&*()
-let counter; // usar palavras descritivas
-const calcularMedia = () => {}; // para funções usar verbos no infinitivo
+// Randomize color and location of circles
+circles.forEach((element) => {
+  ["mouseover", "click"].forEach((event) => {
+    element.addEventListener(event, () => {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      const color = `rgb(${r}, ${g}, ${b})`;
+      element.style.backgroundColor = color;
+      element.style.top = Math.floor(Math.random() * 100) + "px";
+      element.style.left =
+        Math.floor(Math.random() * (window.innerWidth - 50 - 185 - 1) + 1) +
+        "px";
+      console.log(element.style.left);
+    });
+  });
+});
 
-// Escopos
+// Open e close Modal
+btnOpenModal.addEventListener("click", () => {
+  boxModal.classList.add("active");
+});
 
-function somar() {
-  let sum = 1 + 1;
-  return console.log(sum);
+boxModal.addEventListener("click", (e) => {
+  if (e.target.matches(".box-modal") || !e.target.closest(".modal")) {
+    boxModal.classList.remove("active");
+  }
+});
+
+// Counter
+let count = 0;
+document.querySelector(".btn-sub").addEventListener("click", () => {
+  count -= 1;
+  counter.innerText = count;
+});
+document.querySelector(".btn-plus").addEventListener("click", () => {
+  count += 1;
+  counter.innerText = count;
+});
+
+// Open and close sidebar menu
+document.querySelector(".btn-hamburguer").addEventListener("click", () => {
+  document.querySelector(".menu").classList.toggle("close");
+  document.querySelector("main").classList.toggle("menu-closed");
+});
+
+// Accordion list
+const accordionList = document.querySelectorAll(".list-title");
+console.log();
+
+accordionList.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    botao.classList.toggle("active");
+    const painel = botao.nextElementSibling;
+    if (painel.style.maxHeight) {
+      painel.style.maxHeight = null;
+    } else {
+      painel.style.maxHeight = painel.scrollHeight + "px";
+    }
+  });
+});
+
+// To-Do
+const listElement = document.querySelector(".todo-list");
+const inputText = document.querySelector("#text-item");
+const addBtn = document.querySelector(".add");
+
+let arr = [];
+
+function renderTodo() {
+  listElement.innerText = "";
+  console.log(arr);
+  arr.forEach((text, index) => {
+    let liElement = document.createElement("li");
+    let liText = document.createTextNode(text);
+    let linkLi = document.createElement("a");
+    let linkText = document.createTextNode("Excluir");
+    liElement.appendChild(liText);
+    linkLi.appendChild(linkText);
+    linkLi.setAttribute("href", "#");
+    linkLi.setAttribute("onclick", "deleteItem(" + index + ")");
+    liElement.appendChild(linkLi);
+    listElement.appendChild(liElement);
+    console.log(listElement);
+  });
 }
 
-somar();
-console.log("---");
-// console.log(sum);    retorna um erro pois a variavel let é de escopo de bloco
+renderTodo();
 
-var text = "Bom dia!";
-function exibirTexto() {
-  return console.log(text);
+addBtn.addEventListener("click", () => {
+  if (inputText.value) {
+    arr.push(inputText.value);
+  }
+  return renderTodo();
+});
+
+function deleteItem(pos) {
+  arr.splice(pos, 1);
+  renderTodo();
 }
-
-exibirTexto();
-console.log("---");
-console.log(text);
-
-// Tipos de Dados
-let number = 123;
-let boolean = 1; // ou 0
-let BigInt = 23568273658736485763872657636255475237546237645762535423; // apenas um ideia
-let undefined1;
-console.log(undefined1);
-let notANumber = 1 / "b";
-console.log(notANumber);
-let string = "Escola";
-let array = [1, 2, 5, 3, 4];
-let carroObject = {
-  rodas: 4,
-  cor: "azul",
-  portas: 4,
-};
-console.log(carroObject);
-console.log(typeof(carroObject));
-console.log(null);
-
-// Tipos de conversão
-// Explicita
-
-let numbers = 123
-let numbersString = numbers.toString()
-console.log(numbersString);
-console.log(parseFloat(numbersString));
-console.log(parseInt(numbersString));

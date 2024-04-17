@@ -4,8 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header class="menu close">
+      <div class="btn-hamburguer">
+        <div class="hamburguer"></div>
+      </div>
+      <nav>
+        <ul class="list">
+          <li class="item"><a href="#to-do" class="active">a</a></li>
+          <li class="item"><a href="#to-do">a</a></li>
+          <li class="item"><a href="#to-do">a</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="menu-closed">
+      <div class="box">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+      <hr />
+      <button class="open-modal">Abrir Modal</button>
+      <div class="box-modal">
+        <div class="modal">
+          <h1>Modal</h1>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui,
+            aliquid! Quia, atque veniam tenetur aspernatur magni consequatur
+            repudiandae natus distinctio deleniti. Modi asperiores perspiciatis
+            qui illo corporis quidem, expedita numquam!
+          </p>
+          <button class="close-modal">Fechar Modal</button>
+        </div>
+      </div>
+      <hr />
+      <div class="box-counter">
+        <button class="btn-sub">-</button>
+        <span class="counter">0</span>
+        <button class="btn-plus">+</button>
+      </div>
+      <hr />
+      <section>
+        <h2>Accordion List</h2>
+        <dl class="accordion-list">
+          <dt class="list-title">Title 1</dt>
+          <dd class="list-content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </dd>
+          <dt class="list-title">Title 2</dt>
+          <dd class="list-content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </dd>
+          <dt class="list-title">Title 3</dt>
+          <dd class="list-content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h2>To do List</h2>
+
+        <ul class="list"></ul>
+
+        <h5>Digite um novo item para a lista</h5>
+        <input type="text" name="text-item" id="text-item" />
+        <button class="add">Adicionar</button>
+      </section>
+    </main>
+
     <script src="scripts.js"></script>
   </body>
 </html>

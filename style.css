@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  position: relative;
+}
+
+main {
+  padding-left: 185px;
+  transition: all 0.5s ease;
+}
+
+main.menu-closed {
+  padding-left: 50px;
+}
+
+/* Menu */
+.menu {
+  background-color: #0092cc;
+  width: fit-content;
+  height: 100%;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 25px;
+  position: fixed;
+  transition: all 0.7s ease;
+}
+
+.menu > .btn-hamburguer {
+  width: 30px;
+  height: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu > .btn-hamburguer::before {
+  content: "";
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  top: -7px;
+}
+
+.menu > .btn-hamburguer > .hamburguer {
+  display: block;
+  position: relative;
+}
+
+.menu > .btn-hamburguer > .hamburguer,
+.menu > .btn-hamburguer > .hamburguer::before,
+.menu > .btn-hamburguer > .hamburguer::after {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+}
+
+.menu > .btn-hamburguer > .hamburguer::before,
+.menu > .btn-hamburguer > .hamburguer::after {
+  content: "";
+  position: absolute;
+}
+
+.btn-hamburguer > .hamburguer::before {
+  top: -7px;
+}
+
+.btn-hamburguer > .hamburguer::after {
+  bottom: -7px;
+}
+
+.menu > nav {
+  width: 100%;
+}
+
+.menu > nav > .list {
+  list-style: none;
+  width: 165px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu > nav > .list > .item > a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: start;
+  border-radius: 10px;
+  display: block;
+  padding: 10px 30px;
+}
+
+.menu > nav > .list > .item > a:hover,
+.menu > nav > .list > .item > a.active {
+  color: #333;
+  background-color: #fff;
+}
+
+.menu.close {
+  width: 50px;
+  padding: 20px 5px;
+  align-items: center;
+  transition: all 0.7s ease;
+}
+
+.menu.close > nav > .list {
+  width: 100%;
+}
+.menu.close > nav > .list > .item > a {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Circles */
+
+.box {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.circle {
+  background-color: #333;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.7s ease;
+}
+
+/* Modal */
+
+.open-modal {
+  background-color: rgb(240, 54, 54);
+  color: #fff;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  border: none;
+  box-shadow: -5px 7px 0 2px #333;
+  margin: 10px 50px;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.open-modal:active {
+  top: 7px;
+  right: 5px;
+  box-shadow: 0px 0px 0 0px #333;
+}
+
+.box-modal {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.box-modal.active {
+  display: flex;
+  visibility: visible;
+}
+
+.box-modal > .modal {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.4);
+  padding: 25px;
+  width: 500px;
+  height: 350px;
+  text-align: center;
+  position: relative;
+}
+
+.modal > h1 {
+  margin-bottom: 50px;
+}
+
+.modal > p {
+  font-size: 18px;
+}
+
+.modal > .close-modal {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Accordion list */
+/* .accordion-list {
+} */
+
+.accordion-list > .list-title {
+  width: 300px;
+  font-size: 18px;
+  background-color: #e6e6e6;
+  padding: 10px;
+}
+
+.accordion-list > .list-title:hover,
+.accordion-list > .list-title:active {
+  background-color: #d8d8d8;
+}
+
+.accordion-list > .list-content {
+  width: 300px;
+  background-color: #fafafa;
+  padding: 0 20px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  max-height: 0;
+}
+
+.accordion-list > .list-content > p {
+  margin: 20px 0;
+}
